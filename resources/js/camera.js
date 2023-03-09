@@ -19,6 +19,7 @@ import * as scatter from 'scatter-gl';
 
 import * as params from './params';
 import {isMobile} from './util';
+import { canvasSize } from './index';
 
 // These anchor points allow the pose pointcloud to resize according to its
 // position in the input.
@@ -90,17 +91,18 @@ export class Camera {
       }
     };
 
+    
     const stream = await navigator.mediaDevices.getUserMedia(videoConfig);
-
+    
     const camera = new Camera();
     camera.video.srcObject = stream;
-
+    
     await new Promise((resolve) => {
       camera.video.onloadedmetadata = () => {
         resolve(video);
       };
     });
-
+    
     camera.video.play();
 
     const videoWidth = camera.video.videoWidth;
@@ -113,7 +115,9 @@ export class Camera {
     camera.canvas.height = videoHeight;
     const canvasContainer = document.querySelector('.canvas-wrapper');
     canvasContainer.style = `width: ${videoWidth}px; height: ${videoHeight}px`;
-
+ 
+    canvasSize(videoWidth, videoHeight);
+    
     // Because the image from camera is mirrored, need to flip horizontally.
     camera.ctx.translate(camera.video.videoWidth, 0);
     camera.ctx.scale(-1, 1);

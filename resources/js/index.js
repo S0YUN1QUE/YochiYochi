@@ -12,18 +12,21 @@ function makeid(length) {
   return result;
 }
 
-const draw = (ctx, speed) => {
+const draw = (ctx, speed, width, height) => {
   const coordObj = {};
+  e_canvas.style = `width: ${width}px; height: ${height}px;`;
+  e_canvas.width = width;
+  e_canvas.height = height;
 
   setInterval(() => {
     coordObj[makeid(10)] = {
-      x_coor: Math.floor(Math.random() * (640 - 40)),
+      x_coor: Math.floor(Math.random() * (width - 40)),
       y_coor: 0,
     };
   }, [1000]);
 
   const render = () => {
-    ctx.clearRect(0, 0, 640, 480);
+    ctx.clearRect(0, 0, width, height);
     Array.from(Object.keys(coordObj)).map((el) => {
       const coord = coordObj[el];
       // if (coord.y_coor > 480) {
@@ -45,4 +48,6 @@ const drawSquare = (ctx, x, y) => {
   ctx.stroke();
 };
 
-draw(e_ctx, 2);
+export const canvasSize = (width, height) => {
+  draw(e_ctx, 2, width, height);
+}

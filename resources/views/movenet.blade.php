@@ -7,7 +7,7 @@
                 width: 100%;
                 height: 80%;
             }
-            #output, #video {
+            .canvas-wrapper, #output, #video, #e_canvas {
                 position: absolute;
                 margin: 0;
                 transform: translate(-50%, -50%);
@@ -16,8 +16,8 @@
             }
         </style>
         @vite('resources/js/movenet.js')
-        <!-- @vite('resources/js/index.js')
-        @vite('resources/js/object.js') -->
+        @vite('resources/js/index.js')
+        <!-- @vite('resources/js/object.js') -->
     </head>
     <body>
     <x-app-layout>
@@ -27,7 +27,6 @@
                     <div class="p-6 text-gray-900">
                     <div class="container">
                         <div class="canvas-wrapper">
-                            <canvas id="output"></canvas>
                             <video id="video" playsinline style="
                             -webkit-transform: scaleX(-1);
                             transform: scaleX(-1);
@@ -36,9 +35,12 @@
                             height: auto;
                             ">
                             </video>
+                            <canvas id="output"></canvas>
+                            <canvas id="e_canvas"></canvas>
                         </div>
                         <div id="scatter-gl-container"></div>
                         <div id="movenet"></div>
+                        <div id="index"></div>
                         </div>
                     </div>
                 </div>
