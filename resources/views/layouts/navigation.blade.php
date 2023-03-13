@@ -39,10 +39,10 @@
                     <x-nav-link-parent :href="'#'" :active="request()->routeIs('')">
                         <x-slot name="name">Customer</x-slot>
                         <x-slot name="children">
-                            <a href="#">Notice</a>
+                            <a href="/customer">Notice</a>
                             <span class="separator"></span>
-                            <a href="#">FAQ</a>
-                            <a href="#">QnA</a>
+                            <a href="/customer">FAQ</a>
+                            <a href="/customer">QnA</a>
                         </x-slot>
                     </x-nav-link-parent>
                 </div>

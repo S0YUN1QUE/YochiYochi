@@ -1,3 +1,3 @@
 <x-app-layout>
-    <div id="example"></div>
+    <div id="Qna"></div>
 </x-app-layout>

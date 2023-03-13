@@ -45,3 +45,15 @@ Route::get('/posenet', function () {
 Route::get('/movenet', function () {
     return view('movenet');
 })->name('movenet');
+
+Route::get('/customer', function() {
+    return view('customer');
+});
+
+Route::get('/customer/NoticeDetail', function() {
+    return view('noticeDetail');
+});
+
+Route::get('/customer/QnaDetail', function() {
+    return view('qnaDetail');
+});

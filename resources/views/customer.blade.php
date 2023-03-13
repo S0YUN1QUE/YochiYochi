@@ -1,3 +1,3 @@
 <x-app-layout>
-    <div id="example"></div>
+    <div id="customer"></div>
 </x-app-layout>
