@@ -1,6 +1,6 @@
 <html>
     <head>
-        <script src="tts.js"></script>
+        <!-- <script src="tts.js"></script> -->
         <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.11.0/dist/tf.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/posenet@2.2.2/dist/posenet.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core@3.11.0/dist/tf-core.min.js"></script>
@@ -30,7 +30,7 @@
             }
         </style>
         @vite('resources/js/posnet.js')
-        @vite('resources/js/index.js')
+        <!-- @vite('resources/js/index.js') -->
         @vite('resources/js/object.js')
     </head>
     <body>
@@ -48,7 +48,7 @@
                         <!-- <input id="code_reddit" type="hidden" value="안녕" autocomplete="off">
                         <button class="btn" onclick="g_gout()">버튼</button> -->
                         <div id="posnet"></div>
-                        <div id="index"></div>
+                        <!-- <div id="index"></div> -->
                         <div id="object"></div>
                     </div>
                 </div>

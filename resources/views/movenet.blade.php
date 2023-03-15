@@ -15,9 +15,9 @@
                 left: 50%;
             }
         </style>
-        @vite('resources/js/movenet.js')
-        @vite('resources/js/index.js')
-        <!-- @vite('resources/js/object.js') -->
+        <!-- @vite('resources/js/movenet.js') -->
+        <!-- @vite('resources/js/camera.js') -->
+        @vite('resources/js/object.js')
     </head>
     <body>
     <x-app-layout>
@@ -39,8 +39,9 @@
                             <canvas id="e_canvas"></canvas>
                         </div>
                         <div id="scatter-gl-container"></div>
-                        <div id="movenet"></div>
-                        <div id="index"></div>
+                        <!-- <div id="movenet"></div> -->
+                        <!-- <div id="camera"></div> -->
+                        <div id="object"></div>
                         </div>
                     </div>
                 </div>

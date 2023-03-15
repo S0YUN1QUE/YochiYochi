@@ -15,6 +15,6 @@
         </div>
     </div> -->
     <div>
-        <div id="slider"></div>
+        <div id="example"></div>
     </div>
 </x-app-layout>

@@ -19,7 +19,8 @@ import * as scatter from 'scatter-gl';
 
 import * as params from './params';
 import {isMobile} from './util';
-import { canvasSize } from './index';
+// import { canvasSize } from './object';
+
 
 // These anchor points allow the pose pointcloud to resize according to its
 // position in the input.
@@ -116,7 +117,7 @@ export class Camera {
     const canvasContainer = document.querySelector('.canvas-wrapper');
     canvasContainer.style = `width: ${videoWidth}px; height: ${videoHeight}px`;
  
-    canvasSize(videoWidth, videoHeight);
+    // canvasSize(videoWidth, videoHeight);
     
     // Because the image from camera is mirrored, need to flip horizontally.
     camera.ctx.translate(camera.video.videoWidth, 0);
@@ -145,8 +146,13 @@ export class Camera {
    * Draw the keypoints and skeleton on the video.
    * @param poses A list of poses to render.
    */
-  drawResults(poses) {
+  drawResults(poses,coordArr) {
     for (const pose of poses) {
+      // coordArr = [];
+      pose.keypoints.forEach((keypoint) => [
+        coordArr.push(keypoint)
+      ])
+      // console.log(coordArr.length);
       this.drawResult(pose);
     }
   }
@@ -159,6 +165,7 @@ export class Camera {
     if (pose.keypoints != null) {
       this.drawKeypoints(pose.keypoints);
       this.drawSkeleton(pose.keypoints, pose.id);
+      // console.log(coordArr.length);
     }
     if (pose.keypoints3D != null && params.STATE.modelConfig.render3D) {
       this.drawKeypoints3D(pose.keypoints3D);

@@ -2,11 +2,11 @@ import './bootstrap';
 
 import Alpine from 'alpinejs';
 
-// import {createApp} from 'vue';
+import {createApp} from 'vue';
 
-// import Slider from './components/main/Slider.vue';
+import ExampleComponent from './components/ExampleComponent.vue';
 
-// createApp(Slider).mount('#slider');
+createApp(ExampleComponent).mount('#example');
 
 window.Alpine = Alpine;
 
