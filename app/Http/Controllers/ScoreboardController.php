@@ -31,7 +31,7 @@ class ScoreboardController extends Controller
             'score'  => 'required',  
         ]);
 
-        $values = request(['post_title', 'post_content']);
+        $values = request(['game_id', 'score']);
         $values['user_id'] = Auth::guard('api')->user()->id;
     
         $post = Scoreboard::create($values);

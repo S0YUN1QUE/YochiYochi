@@ -8,6 +8,7 @@ use App\Models\CustomImg;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class CustomGameImgController extends Controller
 {
@@ -15,7 +16,7 @@ class CustomGameImgController extends Controller
     {  
         
         $imgs = CustomImg::OrderBy('created_at', 'desc')->where('game_id', $id)->where('user_id',Auth::guard('api')->user()->id)->get();
- 
+        $imgPath = asset('storage');
         $imgs->map(function($img) use ($imgPath) {
             $img->imgpath = $imgPath.'/images/'.$img->imgpath;
             return $img;
@@ -38,7 +39,7 @@ class CustomGameImgController extends Controller
             $file = $request->file('attachment');
             $fileName = Str::random(40) . '.' . $file->getClientOriginalExtension();
             $path = $file->storeAs('public/images', $fileName);
-            $values['attachment'] = $fileName;
+            $values['imgpath'] = $fileName;
         } else {
             return response()->json([
                 'status' => 'error',

@@ -101,6 +101,6 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('customgameword/store',[CustomGameWordController::class,'store'])->name('customgameword.store'); // 게임 단어 저장
     Route::delete('customgameword/{id}/destroy',[CustomGameWordController::class,'destroy'])->name('customgameword.destroy'); // 게임 단어 삭제
 
-
+    // Route::get('gamecategory',[])
     
 });

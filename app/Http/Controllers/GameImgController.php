@@ -12,8 +12,6 @@ use Illuminate\Pagination\Paginator;
 
 class GameImgController extends Controller
 {
-
-
     public function index(Request $request, $id)
     {  
         $perPage = 10; // 한 페이지에 보여줄 게임 이미지 수
@@ -32,7 +30,6 @@ class GameImgController extends Controller
 
         return $imgs;
     }
-
 
     public function store(Request $request) // 이미지 저장  
     {   
@@ -66,6 +63,9 @@ class GameImgController extends Controller
         }
 
         $img = Gameimg::create($values);
+
+ 
+     
 
         return response()->json([
             'status' => 'success',
