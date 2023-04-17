@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('imgpath');
             $table->unsignedBigInteger('game_id');
+            
             $table->timestamps();
 
             $table->foreign('game_id')->references('id')->on('games');
