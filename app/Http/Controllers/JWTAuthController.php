@@ -170,4 +170,26 @@ class JWTAuthController extends Controller
 
     }
 
+    public function userupdate(Request $request) // 유저정보 update
+    {
+        // 로그인 한 유저의 id값 가져오기
+        $id = Auth::guard('api')->user()->id;
+
+        // 테이블에서 유저 찾기
+        $user = User::find($id);
+
+        // 폼 데이터에서 유저가 수정하고자 하는 필드 가져오기
+        $data = $request->all();
+
+        // 유저 수정하고 저장하기
+        $user->fill($data);
+        $user->save();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'update complete'
+        ]);
+
+    }
+
 }

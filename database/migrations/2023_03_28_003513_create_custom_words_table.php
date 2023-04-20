@@ -18,10 +18,12 @@ return new class extends Migration
             $table->string('word');
             $table->unsignedBigInteger('game_id');
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('category');
             $table->timestamps();
 
             $table->foreign('game_id')->references('id')->on('games');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('category')->references('id')->on('contentcategories');
         });
     }
 

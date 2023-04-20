@@ -49,7 +49,7 @@ Route::get('unauthorized', function() { // 인증실패에러
 
 Route::group(['middleware' => 'auth:api'], function(){
     Route::get('user', [JWTAuthController::class,'user'])->name('api.jwt.user'); // 유저 정보 가져오기
-    
+    Route::post('updateuser',[JWTAuthController::class,'userupdate'])->name('api.jwt.updateuser'); // 유저정보업데이트
     Route::get('logout', [JWTAuthController::class,'logout'])->name('api.jwt.logout'); // 로그아웃
     Route::post('auth', [JWTAuthController::class,'authenticate'])->name('api.jwt.authenticate'); // 토큰인증
 

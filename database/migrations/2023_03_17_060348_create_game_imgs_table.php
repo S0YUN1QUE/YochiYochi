@@ -17,10 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('imgpath');
             $table->unsignedBigInteger('game_id');
-            
+            $table->unsignedBigInteger('category');
             $table->timestamps();
 
             $table->foreign('game_id')->references('id')->on('games');
+            $table->foreign('category')->references('id')->on('contentcategories');
         });
     }
 

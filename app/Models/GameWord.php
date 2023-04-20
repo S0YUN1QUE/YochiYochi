@@ -27,4 +27,6 @@ class Gameword extends Model
     {
         return $this->belongsTo('\App\Models\Game', 'game_id', 'id');
     }
+
+    
 }

@@ -41,4 +41,14 @@ class Game extends Model
     {
         return $this->belongsTo('\App\Models\Gamecategory', 'category','id');
     }
+
+    public function customimgs()
+    {
+        return $this->hasMany('\App\Models\CustomImg', 'game_id', 'id');
+    }
+
+    public function customwords()
+    {
+        return $this->hasMany('\App\Models\CustomWord', 'game_id', 'id');
+    }
 }

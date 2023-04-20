@@ -16,7 +16,7 @@ class Gameimg extends Model
         
         'game_id',
         'imgpath',
-      
+        'category'
     ];
 
     protected $guarded = [
@@ -28,5 +28,10 @@ class Gameimg extends Model
     public function games()
     {
         return $this->belongsTo('\App\Models\Game', 'game_id', 'id');
+    }
+
+    public function contentcategories()
+    {
+        return $this->belongsTo('\App\Models\Contentcategory', 'category', 'id');
     }
 }

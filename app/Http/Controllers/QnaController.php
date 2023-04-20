@@ -94,13 +94,20 @@ class QnaController extends Controller
     }
 
     public function destroy($id){ // 글 삭제
-        $pocket = Qna::where('id', $id) -> first();
-        $pocket -> delete();
-
-        
-        return response()->json([
+        $user = Auth::guard('api')->user();
+        $pocket = Post::where('id', $id) -> first();
+        if($user->id == $pocket->writer || $user->authority == 'admin'){
+            $pocket -> delete();
+            return response()->json([
             'status' => 'success',
             'message' => 'deleted'
-        ], 200);
+            ], 200);
+        }
+        else return response()->json([
+            'status' => 'failed',
+            'message' => 'only writer can delete qna'
+        ], 401);
+        
+        
     }
 }

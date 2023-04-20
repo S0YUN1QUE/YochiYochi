@@ -18,12 +18,13 @@ class GameImgController extends Controller
         $page = $request->input('page', 1); // URL 쿼리 파라미터로부터 페이지 번호를 가져옴
 
         // 게임 ID에 해당하는 게임 이미지 목록을 페이지네이션하여 가져옴
-        $imgs = GameImg::where('game_id', $id)->orderBy('created_at', 'desc')->paginate($perPage, ['*'], 'page', $page);
+        $query = GameImg::where('game_id', $id)->orderBy('created_at', 'desc')->with('contentcategories:id,name');
+        $imgs = $query->paginate($perPage, ['*'], 'page', $page);
 
         $imgPath = asset('storage');
 
         // 각 이미지 정보에 이미지 경로를 추가
-        $imgs->map(function($img) use ($imgPath) {
+        $imgs->getCollection()->map(function($img) use ($imgPath) {
             $img->imgpath = $imgPath.'/images/'.$img->imgpath;
             return $img;
         });
@@ -49,7 +50,8 @@ class GameImgController extends Controller
 
         $values = request(['game_id']);
         $values['user_id'] = auth()->id();
-
+        $values['category'] = 2;
+        
         if ($request->hasFile('attachment')) {
             $file = $request->file('attachment');
             $fileName = time() . '_' . $file->getClientOriginalName();

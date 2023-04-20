@@ -13,15 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('game_words', function (Blueprint $table) {
+        Schema::create('contentcategories', function (Blueprint $table) {
             $table->id();
-            $table->string('word');
-            $table->unsignedBigInteger('game_id');
-            $table->unsignedBigInteger('category');
+            $table->string('name');
             $table->timestamps();
-
-            $table->foreign('game_id')->references('id')->on('games');
-            $table->foreign('category')->references('id')->on('contentcategories');
         });
     }
 
@@ -32,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('game_words');
+        Schema::dropIfExists('contentcategories');
     }
 };

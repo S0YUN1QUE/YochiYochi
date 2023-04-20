@@ -15,7 +15,7 @@ class CustomGameImgController extends Controller
     public function index($id) // 자신이 저장한 게임별 커스텀 이미지 목록
     {  
         
-        $imgs = CustomImg::OrderBy('created_at', 'desc')->where('game_id', $id)->where('user_id',Auth::guard('api')->user()->id)->get();
+        $imgs = CustomImg::OrderBy('created_at', 'desc')->where('game_id', $id)->where('user_id',Auth::guard('api')->user()->id)->with( 'contentcategories:id,name')->get();
         $imgPath = asset('storage');
         $imgs->map(function($img) use ($imgPath) {
             $img->imgpath = $imgPath.'/images/'.$img->imgpath;
@@ -34,7 +34,8 @@ class CustomGameImgController extends Controller
     
         $values = request(['game_id']);
         $values['user_id'] = auth()->id();
-    
+        $values['category'] = 1;
+        
         if ($request->hasFile('attachment')) {
             $file = $request->file('attachment');
             $fileName = Str::random(40) . '.' . $file->getClientOriginalExtension();

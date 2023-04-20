@@ -17,7 +17,8 @@ class CustomImg extends Model
         
         'game_id',
         'imgpath',
-        'user_id'
+        'user_id',
+        'category'
       
     ];
 
@@ -35,5 +36,10 @@ class CustomImg extends Model
     public function users()
     {
         return $this->belongsTo('\App\Models\User', 'user_id', 'id');
+    }
+
+    public function contentcategories()
+    {
+        return $this->belongsTo('\App\Models\Contentcategory', 'category', 'id');
     }
 }

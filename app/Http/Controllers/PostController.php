@@ -11,6 +11,7 @@ use App\Models\Comment;
 use Inertia\Inertia;
 use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Auth;
 
 
 class PostController extends Controller
@@ -118,14 +119,23 @@ class PostController extends Controller
     }
 
     public function destroy($id){ // 글 삭제
+        $user = Auth::guard('api')->user();
         $pocket = Post::where('id', $id) -> first();
-        $pocket -> delete();
+        if($user->id == $pocket->writer || $user->authority == 'admin'){
+            
+            $pocket -> delete();
 
-        // return redirect('/post/'.$board_id);
-        return response()->json([
-            'status' => 'success',
-            'message' => 'deleted'
-        ], 200);
+            // return redirect('/post/'.$board_id);
+            return response()->json([
+                'status' => 'success',
+                'message' => 'deleted'
+            ], 200);
+        }
+        else return response()->json([
+            'status' => 'failed',
+            'message' => 'only writer can delete post'
+        ], 401);
+        
     }
 
 

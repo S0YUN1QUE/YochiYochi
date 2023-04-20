@@ -57,7 +57,7 @@ class QnaAnswerController extends Controller
         }
     }
 
-    public function destroy($answer_id){ // 댓글 삭제 Delete
+    public function destroy($answer_id){ // 답변 삭제 Delete
         
 
         // 관리자인지 체크 --------------------------------------
