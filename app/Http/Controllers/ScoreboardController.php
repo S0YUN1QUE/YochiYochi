@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Scoreboard;
 use App\Models\User;
+use App\Models\Game;
 use Illuminate\Support\Facades\Auth;
 
 class ScoreboardController extends Controller
@@ -16,6 +17,9 @@ class ScoreboardController extends Controller
             [
                 'users'=>function($query){
                     $query->select(['name','id']);
+                },
+                'games' => function($query) {
+                    $query->select(['category', 'id']);
                 }
             ])->get();
        

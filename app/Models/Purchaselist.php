@@ -4,16 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Itemreview extends Model
+class Purchaselist extends Model
 {
     use HasFactory;
+
+    protected $table = "purchaselists";
 
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'comment',
         'item_id',
         'user_id',
     ];

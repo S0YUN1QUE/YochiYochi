@@ -14,6 +14,8 @@ use App\Http\Controllers\GameWordController;
 use App\Http\Controllers\CustomGameImgController;
 use App\Http\Controllers\CustomGameWordController;
 use App\Http\Controllers\NoticeController;
+use App\Http\Controllers\GameController;
+use App\Http\Controllers\PurchaselistController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -73,6 +75,8 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('items/{id}',[ItemController::class,'update'])->name('item.update'); // 상품 수정 ( Update )
     Route::delete('items/{id}',[ItemController::class,'destroy']); // 상품 삭제 (Delete)
 
+    Route::get('purchaselist',[PurchaselistController::class,'index'])->name('purchase.index'); // 구매내역
+
     Route::post('/comments/store', [CommentController::class,'store'])->name('comment.add'); // 댓글 저장 Create
     Route::delete('/comments/{comment_id}', [CommentController::class, 'destroy'])->name('comment.destroy'); // 댓글 삭제
 
@@ -81,6 +85,8 @@ Route::group(['middleware' => 'auth:api'], function(){
 
     Route::post('/reviews/store', [ReviewController::class,'store'])->name('review.add'); // 상품 리뷰 저장 Create
     Route::delete('/reviews/{comment_id}', [ReviewController::class, 'destroy'])->name('review.destroy'); // 상품 리뷰 삭제
+
+    Route::get('/gameindex/{id}',[GameController::class,'index'])->name('game.index'); // 게임 목록
 
     Route::get('/score',[ScoreboardController::class,'index'])->name('scorebaord.index'); // 자기 게임 점수 기록 목록
     Route::post('/score/store',[ScoreboardController::class,'store'])->name('scorebaord.store'); // 게임 점수 저장
@@ -102,9 +108,9 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('customgameword/store',[CustomGameWordController::class,'store'])->name('customgameword.store'); // 게임 단어 저장
     Route::delete('customgameword/{id}/destroy',[CustomGameWordController::class,'destroy'])->name('customgameword.destroy'); // 게임 단어 삭제
 
-    Route::post('notice/store',[NoticeController::class,'store'])->name('qna.store'); // 작성글 DB에 추가 ( Create )
-    Route::get('notice/{id}',[NoticeController::class,'show'])->name('qna.show'); // 글 상세보기 ( Read )
-    Route::post('notice/{id}',[NoticeController::class,'update'])->name('qna.update'); // 글 수정 ( Update )
-    Route::delete('notice/{id}', [NoticeController::class, 'destroy'])->name('qna.destroy'); // 글 삭제 ( Delete )
+    Route::post('notice/store',[NoticeController::class,'store'])->name('notice.store'); // 작성글 DB에 추가 ( Create )
+    Route::get('notice/{id}',[NoticeController::class,'show'])->name('notice.show'); // 글 상세보기 ( Read )
+    Route::post('notice/{id}',[NoticeController::class,'update'])->name('notice.update'); // 글 수정 ( Update )
+    Route::delete('notice/{id}', [NoticeController::class, 'destroy'])->name('notice.destroy'); // 글 삭제 ( Delete )
     
 });
