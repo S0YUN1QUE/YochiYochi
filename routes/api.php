@@ -13,6 +13,7 @@ use App\Http\Controllers\GameImgController;
 use App\Http\Controllers\GameWordController;
 use App\Http\Controllers\CustomGameImgController;
 use App\Http\Controllers\CustomGameWordController;
+use App\Http\Controllers\NoticeController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -101,6 +102,9 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('customgameword/store',[CustomGameWordController::class,'store'])->name('customgameword.store'); // 게임 단어 저장
     Route::delete('customgameword/{id}/destroy',[CustomGameWordController::class,'destroy'])->name('customgameword.destroy'); // 게임 단어 삭제
 
-    
+    Route::post('notice/store',[NoticeController::class,'store'])->name('qna.store'); // 작성글 DB에 추가 ( Create )
+    Route::get('notice/{id}',[NoticeController::class,'show'])->name('qna.show'); // 글 상세보기 ( Read )
+    Route::post('notice/{id}',[NoticeController::class,'update'])->name('qna.update'); // 글 수정 ( Update )
+    Route::delete('notice/{id}', [NoticeController::class, 'destroy'])->name('qna.destroy'); // 글 삭제 ( Delete )
     
 });

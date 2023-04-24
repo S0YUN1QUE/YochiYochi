@@ -45,7 +45,8 @@ class GameImgController extends Controller
 
         $validatedData = $request->validate([
             'game_id' => 'required', 
-            'attachment' => 'nullable|image|mimetypes:image/jpeg,image/png,image/gif,image/svg+xml',                   
+            'attachment' => 'nullable|image|mimetypes:image/jpeg,image/png,image/gif,image/svg+xml',       
+                        
         ]);
 
         $values = request(['game_id']);
