@@ -86,7 +86,7 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('/reviews/store', [ReviewController::class,'store'])->name('review.add'); // 상품 리뷰 저장 Create
     Route::delete('/reviews/{comment_id}', [ReviewController::class, 'destroy'])->name('review.destroy'); // 상품 리뷰 삭제
 
-    Route::get('/gameindex/{id}',[GameController::class,'index'])->name('game.index'); // 게임 목록
+    Route::get('/gameindex',[GameController::class,'index'])->name('game.index'); // 게임 목록
 
     Route::get('/score',[ScoreboardController::class,'index'])->name('scorebaord.index'); // 자기 게임 점수 기록 목록
     Route::post('/score/store',[ScoreboardController::class,'store'])->name('scorebaord.store'); // 게임 점수 저장

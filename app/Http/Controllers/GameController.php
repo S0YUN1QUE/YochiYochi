@@ -7,8 +7,8 @@ use App\Models\Game;
 
 class GameController extends Controller
 {
-    public function index($id){
-        $games = Game::OrderBy('created_at', 'desc')->where('category', $id)->get();
+    public function index(){
+        $games = Game::OrderBy('created_at', 'desc')->get();
 
         return $games;
     }

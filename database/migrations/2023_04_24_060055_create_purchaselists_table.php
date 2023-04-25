@@ -17,6 +17,10 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('item_id');
+            $table->unsignedBigInteger('order_number')->autoIncrement();
+            $table->unsignedBigInteger('quantity');
+            $table->string('address');
+            $table->boolean('delivery')->default(false);
             $table->timestamps();
 
             $table->foreign('item_id')->references('id')->on('items');
