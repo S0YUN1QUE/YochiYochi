@@ -10,7 +10,7 @@
             <input class="form-control mb-2 rains-container" type="text" :value="this.typed"
                 aria-label="Disabled input example" disabled readonly />
         </div>
-        <button class="btn btn-outline-primary mb-3" v-if="!isStarted && !isFinished" @click="startGame">게임 시작</button>
+        <button class="btn btn-outline-primary mb-3" v-if="!isStarted" @click="startGame()">게임 시작</button>
         <button class="btn btn-outline-secondary mb-3" v-if="isGameOver" @click="restartGame">다시하기</button>
     </div>
 </template>
@@ -22,7 +22,7 @@ import { useRouter } from 'vue-router';
 export default {
     data() {
         return {
-            targets: [],
+            targets: ["スイカ"],
             typed: '',
             score: 0,
             speed: 0.2,
@@ -122,7 +122,7 @@ export default {
                 requestAnimationFrame(loop);
             }
             if (this.isScorePosted) {
-                this.completeWord()
+                this.completeWord(ctx)
             }
         };
         this.loop = loop;
@@ -150,7 +150,7 @@ export default {
         },
         startGame() {
             if (this.level === 1) {
-                const numTargetsToAdd = 1;
+                const numTargetsToAdd = 5;
                 for (let i = 0; i < numTargetsToAdd; i++) {
                     let randomIndex;
                     do {
@@ -192,7 +192,7 @@ export default {
                 }
                 if (this.typed === this.targets[i]) {
                     this.typed = '';
-                    this.score++;
+                    this.score += 10;
                     this.targets.splice(i, 1);
                     this.targetsX.splice(i, 1);
                     // this.targets.unshift(''); // 배열의 첫 번째 요소를 빈 문자열로 채웁니다.
@@ -230,6 +230,7 @@ export default {
                 this.targetsX.splice(targetIndex, 0, 0);
             }
 
+            console.log(this.targets);
             if (this.targets.length === 0) {
                 // 게임이 끝난 경우
                 // this.ctx.clearRect(0, 0, this.width, this.height);
@@ -281,7 +282,7 @@ export default {
         },
         async getWord() {
             try {
-                const cuslist = await this.$store.dispatch("game/indexWord", 2);
+                const cuslist = await this.$store.dispatch("game/indexWord", 5);
                 this.word = cuslist
             } catch (err) {
                 console.error(err);

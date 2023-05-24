@@ -10,12 +10,12 @@
                 <p>총 점수: {{ totalScore }}</p>
                 <p>남은 시간: {{ timeRemaining }}초</p>
             </div>
-            <div class="card-grid" v-if="gameStarted">
+            <div class="grid grid-cols-4 justify-items-center" v-if="gameStarted">
                 <div v-for="(card, index) in cards" :key="index">
-                    <div class="card memory-card" :class="{ flipped: card.visible }" @click="handleCardClick(index)"
+                    <div class="card memory-card mt-5" :class="{ flipped: card.visible }" @click="handleCardClick(index)"
                         :style="{ pointerEvents: clickable ? 'auto' : 'none' }">
                         <div class="card-face card-front" :style="{ visibility: card.visible ? 'visible' : 'hidden' }">
-                            <img :src="card.value" alt="카드 앞면" width="80" height="120">
+                            <img :src="card.value" alt="카드 앞면" width="100">
                         </div>
                         <div class="card-face card-back" :data-number="card.value"></div>
                     </div>
@@ -217,8 +217,8 @@ export default {
 
 .memory-card {
     position: relative;
-    width: 80px;
-    height: 120px;
+    width: 110px;
+    height: 140px;
     transform-style: preserve-3d;
     transition: transform 0.5s;
 }

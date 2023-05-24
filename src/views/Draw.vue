@@ -26,7 +26,7 @@
                         <span v-if="!disabled">잠금 해제</span>
                         <span v-else>잠금</span>
                     </button>
-                    <button class="btn btn-primary" type="button" @click.prevent="$refs.VueCanvasDrawing.undo()">
+                    <button class="btn btn-outline-primary" type="button" @click.prevent="$refs.VueCanvasDrawing.undo()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z" />
@@ -35,7 +35,7 @@
                         </svg>
                         뒤로 되감기
                     </button>
-                    <button class="btn btn-primary" type="button" @click.prevent="$refs.VueCanvasDrawing.redo()">
+                    <button class="btn btn-outline-primary" type="button" @click.prevent="$refs.VueCanvasDrawing.redo()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z" />
@@ -44,7 +44,7 @@
                         </svg>
                         앞으로 되감기
                     </button>
-                    <button class="btn btn-primary" type="button" @click.prevent="$refs.VueCanvasDrawing.reset()">
+                    <button class="btn btn-outline-primary" type="button" @click.prevent="$refs.VueCanvasDrawing.reset()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-file-earmark" viewBox="0 0 16 16">
                             <path
@@ -174,7 +174,7 @@ export default {
             line: 5,
             color: "#000000",
             strokeType: "dash",
-            lineCap: "square",
+            lineCap: "round",
             lineJoin: "miter",
             backgroundColor: "#FFFFFF",
             backgroundImage: null,

@@ -1,12 +1,12 @@
 <template>
     <div v-if="cate == `all`" class="cateTest">
-        <p v-for="item in all" :key="item" :class="`category`" :style="{backgroundColor: item.color}" @click="viewTopic">{{ item.name }}</p>
+        <p v-for="item in all" :key="item" :class="`category`" :style="{backgroundColor: item.color}" @click="viewTopic, moveUrl(item.name)">{{ item.name }}</p>
     </div>
     <div v-if="cate == `health`" class="cateTest">
-        <p v-for="item in health" :key="item" :class="`category`" :style="{backgroundColor: item.color}">{{ item.name }}</p>
+        <p @click="moveUrl(item.name)" v-for="item in health" :key="item" :class="`category`" :style="{backgroundColor: item.color}">{{ item.name }}</p>
     </div>
     <div v-if="cate == `human`" class="cateTest">
-        <p v-for="item in human" :key="item" :class="`category`" :style="{backgroundColor: item.color}">{{ item.name }}</p>
+        <p @click="moveUrl(item.name)" v-for="item in human" :key="item" :class="`category`" :style="{backgroundColor: item.color}">{{ item.name }}</p>
     </div>
     <div v-if="cate == `natural`" class="cateTest">
         <p @click="moveUrl(item.name)" v-for="item in natural" :key="item" :class="`category`" :style="{backgroundColor: item.color}">{{
@@ -31,16 +31,16 @@ export default {
             // 전체, 건강, 인관관계, 환경, 표현, 언어
             all: [{ name: "봄", color: "rgb(243, 81, 82)" }, { name: "여름", color: "rgb(36, 107, 189)" }, { name: "가을", color: "rgb(9, 181, 128)" },
             { name: "겨울", color: "rgb(9, 181, 128)" }, { name: "영진", color: "rgb(243, 81, 82)" }, { name: "파이팅", color: "rgb(36, 107, 189)" }],
-            health: [{ name: "놀이1(건강)", color: "rgb(243, 81, 82)" }, { name: "놀이2(건강)", color: "rgb(36, 107, 189)" }, { name: "놀이3(건강)", color: "rgb(9, 181, 128)" },
-            { name: "놀이4(건강)", color: "rgb(9, 181, 128)" }, { name: "놀이5(건강)", color: "rgb(243, 81, 82)" }, { name: "놀이6(건강)", color: "rgb(36, 107, 189)" }],
-            human: [{ name: "놀이1(인관관계)", color: "rgb(243, 81, 82)" }, { name: "놀이2(인관관계)", color: "rgb(36, 107, 189)" }, { name: "놀이3(인관관계)", color: "rgb(9, 181, 128)" },
-            { name: "놀이4(인관관계)", color: "rgb(9, 181, 128)" }, { name: "놀이5(인관관계)", color: "rgb(243, 81, 82)" }, { name: "놀이6(인관관계)", color: "rgb(36, 107, 189)" }],
-            natural: [{ name: "카드 기억 게임", color: "rgb(243, 81, 82)" }, { name: "놀이2(환경)", color: "rgb(36, 107, 189)" }, { name: "놀이3(환경)", color: "rgb(9, 181, 128)" },
-            { name: "놀이4(환경)", color: "rgb(9, 181, 128)" }, { name: "놀이5(환경)", color: "rgb(243, 81, 82)" }, { name: "놀이6(환경)", color: "rgb(36, 107, 189)" }],
-            exp: [{ name: "그림 그리기", color: "rgb(243, 81, 82)" }, { name: "놀이2(표현)", color: "rgb(36, 107, 189)" }, { name: "놀이3(표현)", color: "rgb(9, 181, 128)" },
-            { name: "놀이4(표현)", color: "rgb(9, 181, 128)" }, { name: "놀이5(표현)", color: "rgb(243, 81, 82)" }, { name: "놀이6(표현)", color: "rgb(36, 107, 189)" }],
-            lang: [{ name: "산성비 게임", color: "rgb(243, 81, 82)" }, { name: "놀이2(언어)", color: "rgb(36, 107, 189)" }, { name: "놀이3(언어)", color: "rgb(9, 181, 128)" },
-            { name: "놀이4(언어)", color: "rgb(9, 181, 128)" }, { name: "놀이5(언어)", color: "rgb(243, 81, 82)" }, { name: "놀이6(언어)", color: "rgb(36, 107, 189)" }],
+            health: [{ name: "계절꽃잡기", color: "rgb(243, 81, 82)" }, { name: "온몸비틀기", color: "rgb(36, 107, 189)" }, { name: "동작따라하기", color: "rgb(9, 181, 128)" },
+            { name: "체조해봐요", color: "rgb(9, 181, 128)" }, { name: "술래잡기", color: "rgb(243, 81, 82)" }, { name: "링피트", color: "rgb(36, 107, 189)" }],
+            human: [{ name: "인삿말맞추기", color: "rgb(243, 81, 82)" }, { name: "내가누구게?", color: "rgb(36, 107, 189)" }, { name: "대화를이어보자", color: "rgb(9, 181, 128)" },
+            { name: "칭찬해봐요", color: "rgb(9, 181, 128)" }, { name: "범인은 누구", color: "rgb(243, 81, 82)" }, { name: "뭐하니", color: "rgb(36, 107, 189)" }],
+            natural: [{ name: "카드 기억 게임", color: "rgb(243, 81, 82)" }, { name: "주제맞추기", color: "rgb(36, 107, 189)" }, { name: "집짓기", color: "rgb(9, 181, 128)" },
+            { name: "여긴어디?", color: "rgb(9, 181, 128)" }, { name: "분리수거하기", color: "rgb(243, 81, 82)" }, { name: "북극곰의눈물", color: "rgb(36, 107, 189)" }],
+            exp: [{ name: "그림 그리기", color: "rgb(243, 81, 82)" }, { name: "응원해 봐요", color: "rgb(36, 107, 189)" }, { name: "몸으로말해요", color: "rgb(9, 181, 128)" },
+            { name: "감정표현하기", color: "rgb(9, 181, 128)" }, { name: "날 따라 해봐요", color: "rgb(243, 81, 82)" }, { name: "동물맞추기", color: "rgb(36, 107, 189)" }],
+            lang: [{ name: "산성비 게임", color: "rgb(243, 81, 82)" }, { name: "글자쓰기", color: "rgb(36, 107, 189)" }, { name: "단어맞추기", color: "rgb(9, 181, 128)" },
+            { name: "오늘의명언", color: "rgb(9, 181, 128)" }, { name: "장문쓰기", color: "rgb(243, 81, 82)" }, { name: "속담맞추기", color: "rgb(36, 107, 189)" }],
         }
     },
     methods: {
@@ -52,8 +52,13 @@ export default {
                 this.$router.push({ name: 'cardmemory' })
             } else if (n === '산성비 게임') {
                 this.$router.push({ name: 'rainscore' })
-            } else if (n === '그림 그리기')
+            } else if (n === '그림 그리기') {
                 this.$router.push({ name: 'draw' })
+            } else if (n === '계절꽃잡기') {
+                this.$router.push({ name: 'movenetRain'})
+            } else if (n === '주제맞추기') {
+                this.$router.push({ name: 'picturesort'})
+            }
         }
     }
 }
