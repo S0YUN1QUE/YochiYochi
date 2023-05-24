@@ -53,7 +53,7 @@
                 {
                   type: "link",
                   text: "YochiYochi",
-                  path: {name: 'service'},
+                  path: {name: 'ContentList'},
                 },
                 {
                   type: "hr",
@@ -61,12 +61,12 @@
                 {
                   type: "link",
                   text: "Events",
-                  path: {name: 'service'},
+                  path: {name: 'ContentList'},
                 },
                 {
                   type: "link",
                   text: "Store",
-                  path: {name: 'service'},
+                  path: {name: 'ContentList'},
                 },
               ]
             },

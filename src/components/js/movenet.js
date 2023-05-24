@@ -20,7 +20,7 @@ import "@tensorflow/tfjs-backend-webgpu";
 // import * as mpPose from '@mediapipe/pose';
 
 import * as tfjsWasm from "@tensorflow/tfjs-backend-wasm";
-
+import * as tf from "@tensorflow/tfjs";
 // console.log(`movenet${a}`);
 
 import * as posedetection from "@tensorflow-models/pose-detection";
@@ -36,6 +36,7 @@ export default class MoveNet {
   }
 
   async init(cb) {
+    await tf.setBackend("webgl");
     tfjsWasm.setWasmPaths(
       `https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm@${tfjsWasm.version_wasm}/dist/`
     );
