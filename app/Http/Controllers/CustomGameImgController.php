@@ -18,7 +18,19 @@ class CustomGameImgController extends Controller
         $imgs = CustomImg::OrderBy('created_at', 'desc')->where('game_id', $id)->where('user_id',Auth::guard('api')->user()->id)->with( 'contentcategories:id,name')->get();
         $imgPath = asset('storage');
         $imgs->map(function($img) use ($imgPath) {
-            $img->imgpath = $imgPath.'/images/'.$img->imgpath;
+            $img->imgpath = $imgPath.'/images/custom_imgs/'.$img->imgpath;
+            return $img;
+        });
+
+        return $imgs;
+    }
+
+    public function indexAll()
+    {
+        $imgs = CustomImg::OrderBy('created_at', 'desc')->where('user_id',Auth::guard('api')->user()->id)->get();
+        $imgPath = asset('storage');
+        $imgs->map(function($img) use ($imgPath) {
+            $img->imgpath = $imgPath.'/images/custom_imgs/'.$img->imgpath;
             return $img;
         });
 
@@ -39,7 +51,7 @@ class CustomGameImgController extends Controller
         if ($request->hasFile('attachment')) {
             $file = $request->file('attachment');
             $fileName = Str::random(40) . '.' . $file->getClientOriginalExtension();
-            $path = $file->storeAs('public/images', $fileName);
+            $path = $file->storeAs('public/images/custom_imgs', $fileName);
             $values['imgpath'] = $fileName;
         } else {
             return response()->json([

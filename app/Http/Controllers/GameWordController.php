@@ -24,7 +24,8 @@ class GameWordController extends Controller
     {   
         request() -> validate([
             'game_id' => 'required', 
-            'word' => 'required',                   
+            'word' => 'required',
+            'category' => 'required',                   
         ]);
 
         $values = request(['game_id','word']);

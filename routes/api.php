@@ -100,6 +100,8 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('gameword/store',[GameWordController::class,'store'])->name('gameword.store'); // 게임 단어 저장
     Route::delete('gameword/{id}/destroy',[GameWordController::class,'destroy'])->name('gameword.destroy'); // 게임 단어 삭제
 
+    
+    Route::get('customgameimg',[CustomGameImgController::class,'indexAll'])->name('customgameimg.indexAll'); // 커스텀 이미지 목록
     Route::get('customgameimg/{id}',[CustomGameImgController::class,'index'])->name('customgameimg.index'); // 게임별 커스텀 이미지 목록
     Route::post('customgameimg/store',[CustomGameImgController::class,'store'])->name('customgameimg.store'); // 게임 커스텀 이미지 저장
     Route::delete('customgameimg/{id}',[CustomGameImgController::class,'destroy'])->name('customgameimg.destroy'); // 게임 커스텀 이미지 삭제
@@ -108,6 +110,7 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('customgameword/store',[CustomGameWordController::class,'store'])->name('customgameword.store'); // 게임 단어 저장
     Route::delete('customgameword/{id}/destroy',[CustomGameWordController::class,'destroy'])->name('customgameword.destroy'); // 게임 단어 삭제
 
+    Route::get('notice', [NoticeController::class,'index'])->name('notice.index');
     Route::post('notice/store',[NoticeController::class,'store'])->name('notice.store'); // 작성글 DB에 추가 ( Create )
     Route::get('notice/{id}',[NoticeController::class,'show'])->name('notice.show'); // 글 상세보기 ( Read )
     Route::post('notice/{id}',[NoticeController::class,'update'])->name('notice.update'); // 글 수정 ( Update )

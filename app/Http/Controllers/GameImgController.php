@@ -25,7 +25,7 @@ class GameImgController extends Controller
 
         // 각 이미지 정보에 이미지 경로를 추가
         $imgs->getCollection()->map(function($img) use ($imgPath) {
-            $img->imgpath = $imgPath.'/images/'.$img->imgpath;
+            $img->imgpath = $imgPath.'/images/game_imgs/'.$img->imgpath;
             return $img;
         });
 
@@ -51,12 +51,12 @@ class GameImgController extends Controller
 
         $values = request(['game_id']);
         $values['user_id'] = auth()->id();
-        $values['category'] = 2;
+        $values['category'] = 1;
         
         if ($request->hasFile('attachment')) {
             $file = $request->file('attachment');
             $fileName = time() . '_' . $file->getClientOriginalName();
-            $path = $file->storeAs('public/images', $fileName);
+            $path = $file->storeAs('public/images/game_imgs', $fileName);
             $values['imgpath'] = $fileName;
         } else {
             return response()->json([
