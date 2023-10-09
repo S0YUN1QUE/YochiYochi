@@ -1,6 +1,6 @@
 <template>
     <div class="flex items-center text-3xl user-select-none">
-        <div class="basis-1/6 py-12 rounded-full bg-black text-white font-bold cursor-pointer" @click="checkPro">프로필</div>
+        <div class="basis-1/6 py-12 rounded-full bg-black text-white font-bold cursor-pointer" @click="checkPro">プロフィール</div>
         <div class="basis-10"></div>
         <div class="flex flex-1 py-12 rounded-full border bg-gray-500 text-4xl">
             <p class="basis-1/12"></p>
@@ -11,7 +11,7 @@
             <p class="basis-1/12"></p>
         </div>
         <div class="basis-10"></div>
-        <div class="basis-1/5 px-2 py-14 rounded-3xl text-2xl text-white font-semibold" :style="{ backgroundColor: 'rgb(9, 181, 128)'}">포인트: {{ point }}</div>
+        <div class="basis-1/5 px-2 py-14 rounded-3xl text-2xl text-white font-semibold" :style="{ backgroundColor: 'rgb(9, 181, 128)'}">ポイント: {{ point }}</div>
     </div>
 </template>
 

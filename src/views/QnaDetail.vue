@@ -7,9 +7,9 @@
                 <div class="border-dashed border-b-4 flex p-3 items-center">
                     <p class="bg-orange-400 rounded-lg p-2 font-extrabold text-white">category</p>
                     <p class="pl-4 text-xl font-extrabold rounded-xl flex-1">{{ title }}</p>
-                    <p class="font-extrabold">작성자: </p>
+                    <p class="font-extrabold">作成者: </p>
                     <p class="font-extrabold pl-1">{{ writer }}</p>
-                    <p class="font-extrabold pl-4">작성일: </p>
+                    <p class="font-extrabold pl-4">作成日: </p>
                     <p class="font-extrabold pl-1">{{ created_at }}</p>
                 </div>
 

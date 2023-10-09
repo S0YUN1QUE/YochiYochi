@@ -1,11 +1,11 @@
 <template>
   <div class="container">
-    <h1>그림을 분류해 보자!</h1>
+    <h1>絵を分けて見よう!</h1>
     <div v-if="!gameStarted">
-      <button @click="startGame">게임시작</button>
+      <button @click="startGame">スタート</button>
     </div>
     <div v-else>
-      <div class="score">점수: {{ score }}</div>
+      <div class="score">点数: {{ score }}</div>
       <div class="picture">
         <img :src="currentPicture.imgpath" :alt="currentPicture.name" />
       </div>
@@ -23,17 +23,17 @@
         <h2>{{ answerMessage }}</h2>
       </div>
       <div v-else-if="answer[current] === '정답'" class="answer">
-        <h2>정답입니다!</h2>
-        <button @click="nextCategory">다음 카테고리</button>
+        <h2>正解です!</h2>
+        <button @click="nextCategory">次のカテゴリー</button>
       </div>
       <div v-if="answer[current] === '틀림'" class="answer">
-        <h2>틀렸습니다!</h2>
+        <h2>はずれです</h2>
       </div>
       <div v-if="wrongCount === 3" class="modal">
         <div class="modal-content">
-          <h2>게임이 종료되었습니다.</h2>
-          <p>최종 점수: {{ score }}</p>
-          <button @click="restartGame">다시 시작하기</button>
+          <h2>ゲームが終了しました。</h2>
+          <p>最終点数: {{ score }}</p>
+          <button @click="restartGame">やり直す</button>
         </div>
       </div>
       <div
@@ -78,17 +78,17 @@ export default {
     },
     async checkAnswer(picture, category) {
       if (picture.contentcategories.name === category) {
-        this.answerMessage = "정답입니다!";
+        this.answerMessage = "正解です!";
         this.score += 10;
         this.isNextDisabled = true;
 
         // 타이머를 설정하고 ID를 저장합니다.
         this.answerTimeoutId = setTimeout(() => {
           this.answerMessage = "";
-          this.answer[this.current] = "정답";
+          this.answer[this.current] = "正解";
         }, 1000);
       } else {
-        this.answerMessage = "틀렸습니다!";
+        this.answerMessage = "はずれです!";
         this.wrongCount++;
         if (this.wrongCount === 3) {
           this.gameOver = true;

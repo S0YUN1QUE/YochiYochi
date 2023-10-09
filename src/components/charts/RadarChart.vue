@@ -19,7 +19,7 @@ export default {
         this.chart = new Chart(ctx, {
             type: "radar",
             data: {
-                labels: ["건강", "인간관계", "환경", "언어", "표현"],
+                labels: ["健康", "人間関係", "環境", "言語", "表現"],
                 datasets: [{
                     label: "",
                     data: [this.radarData[0], this.radarData[1], this.radarData[2], this.radarData[3], this.radarData[4]],

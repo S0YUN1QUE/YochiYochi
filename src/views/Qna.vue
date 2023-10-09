@@ -1,11 +1,11 @@
 <template>
   <div>
-    <h2>QnA 게시판</h2>
+    <h2>QnA 掲示板</h2>
 
     <Qnapage :list-array="qnalist" what-page="/qna/" :pageNum="0" />
 
     <div>
-      <button class="btn btn-primary" @click="goWrite()">등록</button>
+      <button class="btn btn-primary" @click="goWrite()">登録</button>
     </div>
   </div>
 </template>

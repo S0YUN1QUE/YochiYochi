@@ -1,10 +1,10 @@
 <template>
     <div id="community">
-        <b>자유게시판</b>
+        <b>自由掲示板</b>
         <Board Url="/community/" :boards="getCList" />
     </div>
     <div id="resources">
-        <b>학습정보게시판</b>
+        <b>学習情報掲示板</b>
         <Board Url="/qna/" :boards="getQList" />
     </div>
 </template>

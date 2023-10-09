@@ -53,14 +53,14 @@ export default {
     methods: {
         /* 첫페이지 메소드 */
         saveAge(e) {
-            console.log("나이선택", e) // 나이 선택 e == 선택한 나이
+            console.log("年齢選択", e) // 나이 선택 e == 선택한 나이
         },
         levelTest(e) {
-            if(e == "아니요") {
+            if(e == "はい") {
                 this.first = false
                 this.cateList = true
             } else {
-                console.log("테스트화면으로") // 나중에 테스트 화면 생기면 ㄱㄱ
+                console.log("テスト画面へ") // 나중에 테스트 화면 생기면 ㄱㄱ
             }
         },
         /* 영역 정렬 메소드 */

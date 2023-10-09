@@ -1,14 +1,14 @@
 <template>
     <div>
-        <h1>카드 기억 게임</h1>
-        <button v-if="!gameStarted" class="btn btn-outline-secondary mb-3" @click="customUseImg">커스텀 이미지 사용</button>
+        <h1>カードメモリーゲーム</h1>
+        <button v-if="!gameStarted" class="btn btn-outline-secondary mb-3" @click="customUseImg">カスタムイメージ使用</button>
         <div v-if="!gameStarted">
-            <button class="btn btn-outline-primary mb-3" @click="startGame">게임 시작</button>
+            <button class="btn btn-outline-primary mb-3" @click="startGame">スタート</button>
         </div>
         <div v-else>
             <div>
-                <p>총 점수: {{ totalScore }}</p>
-                <p>남은 시간: {{ timeRemaining }}초</p>
+                <p>トータル点数　: {{ totalScore }}</p>
+                <p>残り時間　: {{ timeRemaining }}초</p>
             </div>
             <div class="grid grid-cols-4 justify-items-center" v-if="gameStarted">
                 <div v-for="(card, index) in cards" :key="index">

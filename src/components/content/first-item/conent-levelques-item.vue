@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="font-bold text-[60px]">몇 살입니까?</div>
+        <div class="font-bold text-[60px]">何歳ですか？</div>
         <div class="flex justify-between font-bold text-2xl mt-24">
             <div v-for="item, index in oldList" :key="index">
                 <p class="p-12 px-14 rounded-full bg-red-200 hover:border-black border-2 cursor-pointer" @click="saveAge">{{ item.old }}</p>

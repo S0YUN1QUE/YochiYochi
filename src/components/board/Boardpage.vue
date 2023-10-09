@@ -31,11 +31,11 @@
         </table>
         <div v-show="pageCount > 1" class="btn-cover">
             <button :disabled="this.pageNum === 0" @click="prevPage" class="page-btn btn btn-primary">
-                이전
+                前
             </button>
-            <span class="page-count container-fluid ">{{ this.pageNum + 1 }} / {{ pageCount }} 페이지</span>
+            <span class="page-count container-fluid ">{{ this.pageNum + 1 }} / {{ pageCount }} ページ</span>
             <button :disabled="this.pageNum >= pageCount - 1" @click="nextPage" class="page-btn btn btn-primary">
-                다음
+                次
             </button>
         </div>
     </div>

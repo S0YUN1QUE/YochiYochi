@@ -1,11 +1,11 @@
 <template>
     <div>
-        <h2>게시판 리스트</h2>
+        <h2>掲示板リスト</h2>
 
         <Boardpage :list-array="postlist" what-page="/community/" :pageNum="0" />
 
         <div>
-            <button class="btn btn-primary" @click="goWrite()">등록</button>
+            <button class="btn btn-primary" @click="goWrite()">登録</button>
         </div>
     </div>
 </template>

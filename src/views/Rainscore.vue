@@ -2,16 +2,16 @@
     <div>
         <canvas class="rounded-4 border border-success p-2 mb-2 border-opacity-75" ref="canvas"></canvas>
         <div v-if="isFinished" class="game-finished">
-            <h2>축하합니다!</h2>
-            <p>모든 단어를 맞췄습니다.</p>
-            <button class="btn btn-outline-secondary mb-3" v-if="isFinished" @click="completePage">다시하기</button>
+            <h2>おめでとうございます!</h2>
+            <p>全問正解です.</p>
+            <button class="btn btn-outline-secondary mb-3" v-if="isFinished" @click="completePage">やり直す</button>
         </div>
         <div v-if="this.typed" class="d-flex flex-column align-items-center">
             <input class="form-control mb-2 rains-container" type="text" :value="this.typed"
                 aria-label="Disabled input example" disabled readonly />
         </div>
-        <button class="btn btn-outline-primary mb-3" v-if="!isStarted" @click="startGame()">게임 시작</button>
-        <button class="btn btn-outline-secondary mb-3" v-if="isGameOver" @click="restartGame">다시하기</button>
+        <button class="btn btn-outline-primary mb-3" v-if="!isStarted" @click="startGame">スタート</button>
+        <button class="btn btn-outline-secondary mb-3" v-if="isGameOver" @click="restartGame">やり直す</button>
     </div>
 </template>
 
@@ -173,7 +173,7 @@ export default {
             // targetsX 배열을 초기화합니다.
             this.targetsX = Array.from({ length: this.targets.length }, () => Math.random() * (this.width - this.targetsWidth));
 
-            requestAnimationFrame(this.loop);
+            // requestAnimationFrame(this.loop);
         },
         restartGame() {
             this.$router.go(0)

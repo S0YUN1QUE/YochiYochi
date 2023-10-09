@@ -8,21 +8,21 @@
           class="rounded-full cursor-pointer"
           style="width: 100px"
         />
-        <p class="ml-16">닉네임</p>
+        <p class="ml-16">ニックネーム</p>
       </div>
       <div class="border"></div>
       <div class="flex my-2 mx-7">
-        <p class="basis-1/6">이름</p>
-        <p class="flex-1">김우현</p>
-        <p class="basis-1/13 bg-sky-300 rounded-lg cursor-pointer px-1">수정</p>
+        <p class="basis-1/6">名前</p>
+        <p class="flex-1">キム・ウヒョン</p>
+        <p class="basis-1/13 bg-sky-300 rounded-lg cursor-pointer px-1">修正</p>
       </div>
       <div class="border"></div>
       <div class="flex my-2 mx-7">
-        <p class="basis-1/6">유아 정보</p>
-        <p class="basis-3/12">이름: 응애응애</p>
-        <p class="basis-1/6">나이: 17</p>
+        <p class="basis-1/6">幼児情報</p>
+        <p class="basis-3/12">名前: ばぶばぶ</p>
+        <p class="basis-1/6">年齢: 17</p>
         <p class="flex-1">
-          성별:
+          性別:
           <img
             v-if="sex"
             class="ml-2"
@@ -38,25 +38,25 @@
             style="width: 20px; display: inline"
           />
         </p>
-        <p class="basis-1/13 bg-sky-300 rounded-lg cursor-pointer px-1">수정</p>
+        <p class="basis-1/13 bg-sky-300 rounded-lg cursor-pointer px-1">修正</p>
       </div>
       <div class="border"></div>
       <div class="flex my-2 mx-7">
-        <p class="basis-1/6">연락처</p>
+        <p class="basis-1/6">連絡先</p>
         <p class="flex-1">010101</p>
-        <p class="basis-1/13 bg-sky-300 rounded-lg cursor-pointer px-1">수정</p>
+        <p class="basis-1/13 bg-sky-300 rounded-lg cursor-pointer px-1">修正</p>
       </div>
       <div class="border"></div>
       <div class="flex my-2 mx-7">
-        <p class="basis-1/6">이메일</p>
+        <p class="basis-1/6">メール</p>
         <p class="flex-1">saranhamsida@naver.com</p>
-        <p class="basis-1/13 bg-sky-300 rounded-lg cursor-pointer px-1">수정</p>
+        <p class="basis-1/13 bg-sky-300 rounded-lg cursor-pointer px-1">修正</p>
       </div>
       <div class="border"></div>
       <div class="flex my-2 mx-7">
-        <p class="basis-1/6">주소</p>
+        <p class="basis-1/6">アドレス</p>
         <p class="flex-1">대구광역시 도남중앙로8길 8</p>
-        <p class="basis-1/13 bg-sky-300 rounded-lg cursor-pointer px-1">수정</p>
+        <p class="basis-1/13 bg-sky-300 rounded-lg cursor-pointer px-1">修正</p>
       </div>
       <div class="border"></div>
     </div>

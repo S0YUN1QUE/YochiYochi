@@ -10,7 +10,7 @@
                 :class="{ 'is-invalid': !valids && modelValue }" />
         </div>
         <p v-show="valids ? false : true && modelValue" class="title-danger">
-            {{ names }}을 정확히 입력해주세요.
+            {{ names }}を正確に入力してください。
         </p>
     </form>
 </template>

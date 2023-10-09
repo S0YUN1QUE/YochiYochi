@@ -3,7 +3,7 @@
         <div id="content">
             <div id="note">
                 <!-- 포커스 하기 -->
-                <p class="text-xl font-extrabold pl-3 border-b-2">공지사항</p>
+                <p class="text-xl font-extrabold pl-3 border-b-2">告知</p>
                 <div v-for="(item, index) in notice_list" :key="index">
                     <NoticeListItem :title="item.post_title" :created_at="item.created_at.slice(0, 10)"
                         :notice_index="index">
@@ -18,7 +18,7 @@
                 </ul>
             </div>
             <div id="faq" style="padding-top: 30px;">
-                <p class="text-xl font-extrabold pl-3">자주 묻는 질문</p>
+                <p class="text-xl font-extrabold pl-3">よく聞く質問</p>
                 <ul>
                     <FaqListItem :question="faq_question" :comments="faq_comments"></FaqListItem>
                 </ul>
@@ -30,7 +30,7 @@
                         :question="qna_question"></QnaListItem>
                 </ul>
                 <div class="flex justify-end mt-4">
-                    <div class="border rounded-lg p-1 bg-red-300 cursor-pointer mr-5">질문하기</div>
+                    <div class="border rounded-lg p-1 bg-red-300 cursor-pointer mr-5">質問する</div>
                 </div>
             </div>
         </div>

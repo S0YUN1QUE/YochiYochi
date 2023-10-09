@@ -1,13 +1,13 @@
 <template>
     <div>
-        <h3>수정</h3>
-        <Writeform names="제목" :placeholders="value.title" v-model="value.title" />
-        <Writeform names="내용" :placeholders="value.textdetail" v-model="value.textdetail" />
+        <h3>修正</h3>
+        <Writeform names="タイトル" :placeholders="value.title" v-model="value.title" />
+        <Writeform names="内容" :placeholders="value.textdetail" v-model="value.textdetail" />
     </div>
     <button class="btn btn-outline-secondary mb-3" v-if="whatPage === 'community'" @click="postBoardEditor()">
-        수정
+        修正
     </button>
-    <button class="btn btn-outline-secondary mb-3" v-if="whatPage === 'qna'" @click="postQnaEditor()">수정</button>
+    <button class="btn btn-outline-secondary mb-3" v-if="whatPage === 'qna'" @click="postQnaEditor()">修正</button>
 </template>
 
 <script>
@@ -64,7 +64,7 @@ export default {
             }
         },
         async postBoardEditor() {
-            const ch = confirm("정말 수정하실건가요?");
+            const ch = confirm("本当に修正しますか?");
             if (ch) {
                 try {
                     const postlist = await this.$store.dispatch("community/updatePost", {
@@ -81,7 +81,7 @@ export default {
             }
         },
         async postQnaEditor() {
-            const ch = confirm("정말 수정하실건가요?");
+            const ch = confirm("本当に修正しますか?");
             if (ch) {
                 try {
                     const postlist = await this.$store.dispatch("qna/updateQna", {

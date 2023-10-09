@@ -3,15 +3,15 @@
     <div id="content">
       <div class="mx-36">
         <div id="inf">
-          <p class="text-xl font-extrabold pl-3">회원 정보</p>
+          <p class="text-xl font-extrabold pl-3">会員情報</p>
           <ProfileLIstItem></ProfileLIstItem>
         </div>
         <div id="stat">
-          <p class="text-xl font-extrabold pl-3">유아 학습 통계</p>
+          <p class="text-xl font-extrabold pl-3">幼児学習統計</p>
           <StatListItem></StatListItem>
         </div>
         <div id="pur-his">
-          <p class="text-xl font-extrabold pl-3">구매 내역</p>
+          <p class="text-xl font-extrabold pl-3">購入履歴</p>
           <PurhisListItem></PurhisListItem>
         </div>
       </div>

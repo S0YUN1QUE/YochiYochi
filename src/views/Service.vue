@@ -34,7 +34,7 @@ import StoreListItem from '../components/service/store-list-item.vue';
 export default {
     data() {
         return {
-            evnet_title: '오픈이벤트 : 첫 구매시 다 공짜',
+            evnet_title: 'オープンイベント : 初めて購入した場合ただ',
             evnet_created_at: '2012-03-04',
         }
     },

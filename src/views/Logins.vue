@@ -5,7 +5,7 @@
                 :valids="data.valid.emailHasError" :passwords="false" />
         </div>
         <div class="d-flex flex-column align-items-center">
-            <Input class="w-50" names="비밀번호" placeholders="영문, 숫자, 특수문자 조합 8-16자" v-model="data.value.password"
+            <Input class="w-50" names="暗証番号" placeholders="英語, 数字, 特殊文字 組み合わせ 8-16字" v-model="data.value.password"
                 :passwords="true" :valids="data.valid.passwordHasError" />
         </div>
         <div>

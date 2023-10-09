@@ -5,7 +5,7 @@
             <p class="text-md font-semibold">{{ question }}</p>
         </li>
         <li v-if="visible" class="pl-4 py-2">
-            <span>ㄴ 답변 : </span>
+            <span>ㄴ 返答 : </span>
             <span class="text-sm">{{ comments }}</span>
         </li>
     </div>

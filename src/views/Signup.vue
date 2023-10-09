@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="d-flex flex-column align-items-center">
-            <Input class="w-25 " names="이름" placeholders="ex) 홍길동" v-model="value.name" :valids="valid.nameHasError"
+            <Input class="w-25 " names="名前" placeholders="ex) 田中" v-model="value.name" :valids="valid.nameHasError"
                 :passwords="false" :confirms="false" />
         </div>
         <div class="d-flex flex-column align-items-center input-group">
@@ -10,19 +10,19 @@
         </div>
         <div class="d-flex flex-column align-items-center">
             <!-- Boolean 값만 넣어주고 싶다면 true, false로만 -->
-            <Input class="w-50" names="비밀번호" placeholders="영문, 숫자, 특수문자 조합 8-16자" v-model="value.password" :passwords="true"
+            <Input class="w-50" names="暗証番号" placeholders="英語, 数字, 特殊文字 組み合わせ 8-16字" v-model="value.password" :passwords="true"
                 :valids="valid.passwordHasError" :confirms="false" />
         </div>
         <div class="d-flex flex-column align-items-center">
-            <Input class="w-50" names="비밀번호 확인" v-model="value.password_confirmation" :passwords="true"
+            <Input class="w-50" names="暗証番号再確認" v-model="value.password_confirmation" :passwords="true"
                 :valids="valid.passworConfirmdHasError" :confirms="false" />
         </div>
         <div class="d-flex flex-column align-items-center">
-            <Input class="w-50" names="전화번호" placeholders="ex) 010-0000-1111" v-model="value.tel" :passwords="false"
+            <Input class="w-50" names="電話番号" placeholders="ex) 010-0000-1111" v-model="value.tel" :passwords="false"
                 :valids="valid.telHasError" :confirms="false" />
         </div>
         <div>
-            <button class="btn btn-outline-primary" type="button" @click="signup()">작성</button>
+            <button class="btn btn-outline-primary" type="button" @click="signup()">作成</button>
         </div>
     </div>
 </template>

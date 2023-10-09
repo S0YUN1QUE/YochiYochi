@@ -8,7 +8,7 @@
     </div>
     <div class="flex justify-start user-select-none">
         <p class="text-xl font-semibold cursor-pointer bg-black text-white rounded-lg p-2 hover:text-amber-300 mt-5"
-            @click="backCate">돌아가기</p>
+            @click="backCate">戻る</p>
     </div>
 </template>
 

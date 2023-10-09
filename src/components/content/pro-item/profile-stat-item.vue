@@ -6,32 +6,32 @@
         <div class="flex-1">
             <div class="flex justify-center">
                 <div class="flex-1">
-                    <p class="top text-3xl">레벨</p>
+                    <p class="top text-3xl">レベル</p>
                     <div class="border-2 border-gray-400 py-4 mt-3">
-                        <p class="tb">건강Lv.{{ userLevel[0] }}</p>
-                        <p class="tb">인간관계Lv.{{ userLevel[1] }}</p>
-                        <p class="tb">환경Lv.{{ userLevel[2] }}</p>
-                        <p class="tb">언어Lv.{{ userLevel[3] }}</p>
-                        <p class="tb">표현Lv.{{ userLevel[4] }}</p>
+                        <p class="tb">健康Lv.{{ userLevel[0] }}</p>
+                        <p class="tb">人間関係Lv.{{ userLevel[1] }}</p>
+                        <p class="tb">環境Lv.{{ userLevel[2] }}</p>
+                        <p class="tb">言語Lv.{{ userLevel[3] }}</p>
+                        <p class="tb">表現Lv.{{ userLevel[4] }}</p>
                     </div>
                 </div>
                 <div class="basis-1/6 h-1 border-b-2 border-gray-400 mt-32"></div>
                 <div class="flex-1">
-                    <p class="top">포인트</p>
+                    <p class="top">ポイント</p>
                     <div class="border-2 border-gray-400 py-4 mt-3">
-                        <p class="tb">건강: {{ userScore[0] }}</p>
-                        <p class="tb">인간관계: {{ userScore[1] }}</p>
-                        <p class="tb">환경: {{  userScore[2] }}</p>
-                        <p class="tb">언어: {{ userScore[3] }}</p>
-                        <p class="tb">표현: {{  userScore[4] }}</p>
+                        <p class="tb">健康: {{ userScore[0] }}</p>
+                        <p class="tb">人間関係: {{ userScore[1] }}</p>
+                        <p class="tb">環境: {{  userScore[2] }}</p>
+                        <p class="tb">言語: {{ userScore[3] }}</p>
+                        <p class="tb">表現: {{  userScore[4] }}</p>
                     </div>
                 </div>
             </div>
             <div class="mt-4">
                 <div class="flex justify-between">
-                    <p class="top">학습 내역</p>
+                    <p class="top">学習履歴</p>
                     <p class="bg-black text-white p-2 text-xl rounded-xl cursor-pointer hover:text-amber-300"
-                        @click="detail">상세보기</p>
+                        @click="detail">詳細</p>
                 </div>
                 <div class="flex justify-around rounded-xl border-2 border-gray-400 py-5 mt-3 text-lg">
                     <p class="rounded-3xl w-[30%] py-10" :style="{ backgroundColor: color[index]}" v-for="item, index in userHis" :key="index">
@@ -45,7 +45,7 @@
     </div>
     <div class="flex justify-start">
         <p class="text-xl font-semibold cursor-pointer bg-black text-white rounded-lg p-2 hover:text-amber-300 mt-3 user-select-none"
-            @click="backGame">돌아가기</p>
+            @click="backGame">戻る</p>
     </div>
 </template>
 

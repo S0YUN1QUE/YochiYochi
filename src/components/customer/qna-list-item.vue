@@ -5,8 +5,8 @@
             <p class="flex-1 px-4 text-ellipsis overflow-hidden">{{ title }}</p>
             <p class="basis-1/12 text-center">{{ writer }}</p>
             <p class="basis-2/12 text-center">{{ created_at }}</p>
-            <p class="basis-1/12 text-center" v-if="!visible">답변중</p>
-            <p class="basis-1/12 text-center" v-else>답변완료</p>
+            <p class="basis-1/12 text-center" v-if="!visible">返答中</p>
+            <p class="basis-1/12 text-center" v-else>返答完了</p>
         </li>
     </a>
 </template>

@@ -80,14 +80,14 @@ export default {
         if (rs.data.ok) {
           return true;
         } else {
-          console.error("토큰인증실패");
+          console.error("トークン認証失敗");
           alert(rs.data.result);
           commit("needLogin", true);
           commit("needAdmin", true)
           return false;
         }
       } catch (err) {
-        console.error("에러", err);
+        console.error("エラー", err);
         if (err.response && err.response.status === 401) {
           // Unauthorized error: JWT token is invalid or expired
           alert("Your session has expired. Please log in again.");

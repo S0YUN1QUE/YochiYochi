@@ -1,11 +1,11 @@
 <template>
     <div class="font-bold">
-        <p class="text-8xl">덧셈, 뺄셈, 구구단 게임</p>
+        <p class="text-8xl">掛け算, 引き算, 九九ゲーム</p>
         <p class="text-8xl mt-20">{{ number1 }} {{ operator }} {{ number2 }} = ?</p>
         <div class="flex justify-center items-stretch align-middle mt-10">
-            <p class="text-4xl self-center">정답: </p>
+            <p class="text-4xl self-center">正解: </p>
             <input v-model="answer" class="text-xl border-4 border-red-400 py-2 text-center mx-10 self-center">
-            <p class="text-3xl border-4 border-blue-200 self-center w-[20%] py-2 hover:border-blue-400 cursor-pointer" @click="result">입력</p>
+            <p class="text-3xl border-4 border-blue-200 self-center w-[20%] py-2 hover:border-blue-400 cursor-pointer" @click="result">入力</p>
         </div>
     </div>
 </template>

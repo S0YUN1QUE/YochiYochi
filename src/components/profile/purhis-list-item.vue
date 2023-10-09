@@ -6,10 +6,10 @@
                         alt="구매 이미지" class="" style="width: 80px;">
                 </div>
                 <div class="">
-                    <p>구매 일자</p>
-                    <p>상품명</p>
-                    <p>가격</p>
-                    <p class="text-sm font-normal cursor-pointer">상세내용 ></p>
+                    <p>購入日時</p>
+                    <p>商品名</p>
+                    <p>値段</p>
+                    <p class="text-sm font-normal cursor-pointer">詳細 ></p>
                 </div>
             </div>
         </div>
