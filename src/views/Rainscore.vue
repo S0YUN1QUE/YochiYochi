@@ -10,7 +10,7 @@
             <input class="form-control mb-2 rains-container" type="text" :value="this.typed"
                 aria-label="Disabled input example" disabled readonly />
         </div>
-        <button class="btn btn-outline-primary mb-3" v-if="!isStarted" @click="startGame">スタート</button>
+        <button class="btn btn-outline-primary mb-3" v-if="!isStarted && !isFinished" @click="startGame">スタート</button>
         <button class="btn btn-outline-secondary mb-3" v-if="isGameOver" @click="restartGame">やり直す</button>
     </div>
 </template>
@@ -18,11 +18,10 @@
 <script>
 import { toHandlers } from 'vue';
 import { useRouter } from 'vue-router';
-
 export default {
     data() {
         return {
-            targets: ["スイカ"],
+            targets: [],
             typed: '',
             score: 0,
             speed: 0.2,
@@ -48,32 +47,23 @@ export default {
     },
     mounted() {
         this.getWord()
-
         const canvas = this.$refs.canvas;
         const ctx = canvas.getContext('2d');
-
         this.width = canvas.width = 800;
         this.height = canvas.height = 600;
-
         this.isFinished = false
-
         this.recognitionSupported = 'webkitSpeechRecognition' in window;
-
         // targetsX 배열을 초기화합니다.
         this.targetsX = Array.from({ length: this.targets.length }, () => Math.random() * (this.width - this.targetsWidth));
-
         this.targetsInterval = setInterval(() => {
             this.targetsX = Array.from({ length: this.targets.length }, () => Math.random() * (this.width - this.targetsWidth));
             this.targetsY = -100;
         }, 10000 / this.targetsPerSecond);
-
         const router = useRouter();
         this.router = router
-
         setInterval(() => {
             this.moveTargets();
         }, 1000000 / this.targetsPerSecond);
-
         if (this.recognitionSupported) {
             console.log('음성인식');
             this.recognition = new webkitSpeechRecognition();
@@ -81,11 +71,9 @@ export default {
             this.recognition.continuous = true;
             this.recognition.interimResults = true;
             this.recognition.onresult = null;
-
             this.recognition.onresult = event => {
                 const result = event.results[event.results.length - 1];
                 const word = result[0].transcript.trim();
-
                 if (result.isFinal) {
                     this.typed = word;
                 } else {
@@ -94,35 +82,27 @@ export default {
                     return; // 이 부분을 추가하여 더 이상 함수를 진행하지 않도록 합니다.
                 }
             };
-
             this.recognition.onerror = error => {
                 console.error(error);
             };
         } else {
             console.warn('Speech recognition is not supported in this browser.');
         }
-
         const loop = () => {
             if (this.isGameOver) {
                 this.drawGameOver(ctx);
                 return this.postGameOver();
             }
-            if (this.isGameOver) {
-                this.drawGameOver(ctx);
-                return this.postGameOver();
-            }
-
             ctx.clearRect(0, 0, this.width, this.height);
             this.moveTargets();
             this.drawTargets(ctx);
             this.checkCollisions();
             this.drawScore(ctx);
-
             if (this.isStarted) {
                 requestAnimationFrame(loop);
             }
             if (this.isScorePosted) {
-                this.completeWord(ctx)
+                this.completeWord()
             }
         };
         this.loop = loop;
@@ -132,25 +112,21 @@ export default {
         shuffle(array) {
             let currentIndex = array.length;
             let temporaryValue, randomIndex;
-
             // While there remain elements to shuffle...
             while (0 !== currentIndex) {
-
                 // Pick a remaining element...
                 randomIndex = Math.floor(Math.random() * currentIndex);
                 currentIndex -= 1;
-
                 // And swap it with the current element.
                 temporaryValue = array[currentIndex];
                 array[currentIndex] = array[randomIndex];
                 array[randomIndex] = temporaryValue;
             }
-
             return array;
         },
         startGame() {
             if (this.level === 1) {
-                const numTargetsToAdd = 5;
+                const numTargetsToAdd = 3;
                 for (let i = 0; i < numTargetsToAdd; i++) {
                     let randomIndex;
                     do {
@@ -172,8 +148,7 @@ export default {
             }
             // targetsX 배열을 초기화합니다.
             this.targetsX = Array.from({ length: this.targets.length }, () => Math.random() * (this.width - this.targetsWidth));
-
-            // requestAnimationFrame(this.loop);
+            requestAnimationFrame(this.loop);
         },
         restartGame() {
             this.$router.go(0)
@@ -192,7 +167,7 @@ export default {
                 }
                 if (this.typed === this.targets[i]) {
                     this.typed = '';
-                    this.score += 10;
+                    this.score++;
                     this.targets.splice(i, 1);
                     this.targetsX.splice(i, 1);
                     // this.targets.unshift(''); // 배열의 첫 번째 요소를 빈 문자열로 채웁니다.
@@ -220,17 +195,13 @@ export default {
                 this.targetsPerSecond += 0.1;
                 this.speed += 0.1;
                 this.targetsY = -100;
-
                 // 해당 원소를 배열에서 제거하고
                 const targetIndex = this.targets.indexOf(target);
                 this.targets.splice(targetIndex, 1);
-
                 // 그 자리를 비웁니다.
                 this.targets.splice(targetIndex, 0, '');
                 this.targetsX.splice(targetIndex, 0, 0);
             }
-
-            console.log(this.targets);
             if (this.targets.length === 0) {
                 // 게임이 끝난 경우
                 // this.ctx.clearRect(0, 0, this.width, this.height);
@@ -238,7 +209,6 @@ export default {
                 return;
             }
         },
-
         startFont(ctx) {
             ctx.font = "60px sans-serif";
             ctx.fillStyle = "red";
@@ -273,16 +243,14 @@ export default {
         completePage() {
             // 이미 최종 점수가 전송된 경우 함수를 빠져나옵니다.
             if (this.isScorePosted) return;
-
             // 최종 점수를 서버에 전송합니다.
             this.postGameOver();
-
             // isScorePosted 변수를 true로 설정합니다.
             this.isScorePosted = true;
         },
         async getWord() {
             try {
-                const cuslist = await this.$store.dispatch("game/indexWord", 5);
+                const cuslist = await this.$store.dispatch("game/indexWord", 2);
                 this.word = cuslist
             } catch (err) {
                 console.error(err);
@@ -309,7 +277,6 @@ canvas {
     display: block;
     margin: 0 auto;
 }
-
 .rains-container {
     width: 20em;
     text-align: center;
