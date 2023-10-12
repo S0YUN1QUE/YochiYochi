@@ -264,8 +264,22 @@ body {
 .flex-row {
     display: flex;
     flex-direction: row;
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+    background-color: #f0f0f0; /* 배경색 */
+    padding: 20px; /* 안쪽 여백 */
+    border: 1px solid #ccc; /* 테두리 스타일 및 색상 */
+    border-radius: 10px; /* 모서리 둥글게 */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+    color: #333; /* 텍스트 색상 */
+    font-size: 18px; /* 글꼴 크기 */
+    text-align: center; /* 텍스트 가운데 정렬 */
 }
 
+/* 선택적으로 hover 시에 스타일 변경 */
+.flex-row:hover {
+    background-color: #f38dc5;
+}
 .button-container {
     display: flex;
     flex-direction: row;
