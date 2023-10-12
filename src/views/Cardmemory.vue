@@ -1,27 +1,27 @@
 <template>
     <div>
-        <h1>カードメモリーゲーム</h1>
-        <button v-if="!gameStarted" class="btn btn-outline-secondary mb-3" @click="customUseImg">カスタムイメージ使用</button>
-        <div v-if="!gameStarted">
-            <button class="btn btn-outline-primary mb-3" @click="startGame">スタート</button>
+      <h1>カードメモリーゲーム</h1>
+      <button v-if="!gameStarted" class="btn btn-outline-secondary mb-3" @click="customUseImg">カスタムイメージ使用</button>
+      <div v-if="!gameStarted">
+        <button class="btn btn-outline-primary mb-3" @click="startGame">スタート</button>
+      </div>
+      <div v-else>
+        <div>
+          <p>トータル点数: {{ totalScore }}</p>
+          <p>残り時間　: {{ timeRemaining }}秒</p>
         </div>
-        <div v-else>
-            <div>
-                <p>トータル点数　: {{ totalScore }}</p>
-                <p>残り時間　: {{ timeRemaining }}초</p>
+        <div class="card-grid" v-if="gameStarted">
+          <div v-for="(card, index) in cards" :key="index">
+            <div class="card memory-card" :class="{ flipped: card.visible }" @click="handleCardClick(index)"
+              :style="{ pointerEvents: clickable ? 'auto' : 'none' }">
+              <div class="card-face card-front" :style="{ visibility: card.visible ? 'visible' : 'hidden' }">
+                <img :src="card.value" alt="카드 앞면" :style="{ width: cardImageWidth, height: cardImageHeight }">
+              </div>
+              <div class="card-face card-back" :data-number="card.value"></div>
             </div>
-            <div class="grid grid-cols-4 justify-items-center" v-if="gameStarted">
-                <div v-for="(card, index) in cards" :key="index">
-                    <div class="card memory-card mt-5" :class="{ flipped: card.visible }" @click="handleCardClick(index)"
-                        :style="{ pointerEvents: clickable ? 'auto' : 'none' }">
-                        <div class="card-face card-front" :style="{ visibility: card.visible ? 'visible' : 'hidden' }">
-                            <img :src="card.value" alt="카드 앞면" width="100">
-                        </div>
-                        <div class="card-face card-back" :data-number="card.value"></div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
     </div>
 </template>
   
@@ -41,6 +41,8 @@ export default {
             cuslist: '',
             realcard: '',
             selectedFile: null,
+            cardImageWidth: '80px', // 초기 이미지 너비 설정
+            cardImageHeight: '120px', // 초기 이미지 높이 설정
         };
     },
     computed: {
@@ -52,6 +54,10 @@ export default {
         this.getCard()
     },
     methods: {
+        resizeImage(newWidth, newHeight) {
+            this.cardImageWidth = newWidth;
+            this.cardImageHeight = newHeight;
+        },
         startGame() {
             this.gameStarted = true;
             this.timeRemaining = 60;
@@ -196,6 +202,12 @@ export default {
 </script>
 
 <style>
+.card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지 비율 유지 */
+}
+
 .card-front {
     display: flex;
     justify-content: center;
@@ -217,8 +229,8 @@ export default {
 
 .memory-card {
     position: relative;
-    width: 110px;
-    height: 140px;
+    width: 80px;
+    height: 120px;
     transform-style: preserve-3d;
     transition: transform 0.5s;
 }
