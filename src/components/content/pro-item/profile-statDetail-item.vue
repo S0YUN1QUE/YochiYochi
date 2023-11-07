@@ -3,7 +3,6 @@
         <div class="flex justify-between text-2xl mt-4">
             <p>学習履歴</p>
             <div class="flex text-xl">
-                <p class="mr-3">정렬</p>
                 <div class="flex">
                     <p>最新順</p>
                     <font-awesome-icon icon="fa-solid fa-chevron-down" class="mt-1"/>
@@ -15,7 +14,7 @@
                 <font-awesome-icon class="pointer-events-none" icon="fa-solid fa-chevron-left" style="height: 40px;"/><!-- 왼쪽 -->
             </div>
             <div class="flex flex-1 justify-center">
-                <div class="border-2 p-3 mx-2 w-[18%] max-w-[138px]" v-for="item,index in practice" :key="index">
+                <div class="border-2 p-3 mx-2 max-w-[15%]" v-for="item,index in practice" :key="index">
                     <p class="py-9 rounded-3xl mb-3 max-w-[100%]" :style="{ backgroundColor: color[index]}">{{ gameList.find(game => game.id === item.game_id).name }}</p>
                     <p>ポイント: {{ item.score }}</p>
                     <p>領域: {{category[item.games.category-1]}}</p>
@@ -61,7 +60,7 @@ export default {
             artThis: 5,
 
             color: ["rgb(243, 81, 82)", "rgb(251, 110, 208)", "rgb(36, 107, 189)", "rgb(9, 181, 128)", "rgb(254, 198, 57)"],
-            category: ["건강", "인간관계", "환경", "언어", "표현"]
+            category: ["健康", "人間関係", "環境", "言語", "表現"]
         }
     },
     methods: {

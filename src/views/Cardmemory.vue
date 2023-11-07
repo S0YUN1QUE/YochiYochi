@@ -1,27 +1,27 @@
 <template>
     <div>
-        <h1>カードメモリーゲーム</h1>
-        <button v-if="!gameStarted" class="btn btn-outline-secondary mb-3" @click="customUseImg">カスタムイメージ使用</button>
-        <div v-if="!gameStarted">
-            <button class="btn btn-outline-primary mb-3" @click="startGame">スタート</button>
+      <h1>カードメモリーゲーム</h1>
+      <button v-if="!gameStarted" class="btn btn-outline-secondary mb-3" @click="customUseImg">カスタムイメージ使用</button>
+      <div v-if="!gameStarted">
+        <button class="btn btn-outline-primary mb-3" @click="startGame">スタート</button>
+      </div>
+      <div v-else>
+        <div>
+          <p>トータル点数: {{ totalScore }}</p>
+          <p>残り時間　: {{ timeRemaining }}秒</p>
         </div>
-        <div v-else>
-            <div>
-                <p>トータル点数　: {{ totalScore }}</p>
-                <p>残り時間　: {{ timeRemaining }}초</p>
+        <div class="grid grid-cols-4 gap-y-8 justify-items-center" v-if="gameStarted">
+          <div v-for="(card, index) in cards" :key="index">
+            <div class="card" :class="{ flipped: card.visible }" @click="handleCardClick(index)"
+              :style="{ pointerEvents: clickable ? 'auto' : 'none' }">
+              <div class="card-front" :style="{ visibility: card.visible ? 'visible' : 'hidden' }">
+                <img :src="card.value" alt="카드 앞면" :style="{ width: cardImageWidth, height: cardImageHeight }">
+              </div>
+              <div class="card-back" :data-number="card.value"></div>
             </div>
-            <div class="grid grid-cols-4 justify-items-center" v-if="gameStarted">
-                <div v-for="(card, index) in cards" :key="index">
-                    <div class="card memory-card mt-5" :class="{ flipped: card.visible }" @click="handleCardClick(index)"
-                        :style="{ pointerEvents: clickable ? 'auto' : 'none' }">
-                        <div class="card-face card-front" :style="{ visibility: card.visible ? 'visible' : 'hidden' }">
-                            <img :src="card.value" alt="카드 앞면" width="100">
-                        </div>
-                        <div class="card-face card-back" :data-number="card.value"></div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
     </div>
 </template>
   
@@ -41,6 +41,8 @@ export default {
             cuslist: '',
             realcard: '',
             selectedFile: null,
+            cardImageWidth: '100px', // 초기 이미지 너비 설정
+            cardImageHeight: '140px', // 초기 이미지 높이 설정
         };
     },
     computed: {
@@ -52,11 +54,18 @@ export default {
         this.getCard()
     },
     methods: {
+        resizeImage(newWidth, newHeight) {
+            this.cardImageWidth = newWidth;
+            this.cardImageHeight = newHeight;
+        },
         startGame() {
             this.gameStarted = true;
             this.timeRemaining = 60;
             this.totalScore = 0;
-            this.cards = this.shuffledCardValues.map(value => ({
+            /* while (this.shuffledCardValues.length < 16) {
+                this.shuffledCardValues.pop()
+            } */
+            this.cards = this.shuffledCardValues.slice(0,8).map(value => ({
                 value,
                 visible: true
             }));
@@ -196,6 +205,12 @@ export default {
 </script>
 
 <style>
+.card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지 비율 유지 */
+}
+
 .card-front {
     display: flex;
     justify-content: center;
@@ -203,30 +218,14 @@ export default {
     height: 100%;
 }
 
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    grid-gap: 10px;
-    transform-style: preserve-3d;
-    perspective: 1000px;
-}
-
 .card-container {
     perspective: 1000px;
 }
 
-.memory-card {
-    position: relative;
-    width: 110px;
-    height: 140px;
-    transform-style: preserve-3d;
-    transition: transform 0.5s;
-}
 
-.card.back {
+.card-back {
     transform: rotateY(180deg);
-    background-color: #e8e8e8;
-    color: #444;
+    background-color: #ff8686;
     backface-visibility: hidden;
     position: absolute;
     top: 0;

@@ -31,12 +31,14 @@ import { setBackendAndEnvFlags } from "./util";
 
 export default class MoveNet {
   constructor(cb) {
-    console.log(cb);
+    console.log("cb");
+    
     this.init(cb);
   }
 
   async init(cb) {
-    await tf.setBackend("webgl");
+    
+    await tf.setBackend("webgpu");
     tfjsWasm.setWasmPaths(
       `https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm@${tfjsWasm.version_wasm}/dist/`
     );

@@ -26,24 +26,24 @@
         url: 'e',
       },
     ]" />
-    <Banner image-url="https://cdn.travie.com/news/photo/first/201708/img_19919_1.jpg" url="a" />
+    <Banner image-url="https://t3.ftcdn.net/jpg/03/97/98/32/240_F_397983283_6pfNPBZHtyzfeEUl8y3iMHNi17sylDvh.jpg" url="a" />
     <div class="flex-container">
       <div class="flex-left-container">
-        <Subbanner imageUrl="https://img.etnews.com/news/article/2021/07/23/cms_temp_article_23153814137700.jpg" url="a"
-          text="hello" />
+        <Subbanner imageUrl="https://as1.ftcdn.net/v2/jpg/02/96/24/80/1000_F_296248029_VLudqgNlbYlTkvFG8Q2P9msCEMke33zO.jpg" url="a"
+          text="" />
       </div>
       <div class="flex-right-container">
         <div class="banner-container">
-          <Subbanner imageUrl="https://img.etnews.com/news/article/2021/07/23/cms_temp_article_23153814137700.jpg" url="a"
-            text="myname" />
-          <Subbanner imageUrl="https://img.etnews.com/news/article/2021/07/23/cms_temp_article_23153814137700.jpg" url="a"
-            text="uho" />
+          <Subbanner imageUrl="https://as2.ftcdn.net/v2/jpg/06/00/97/57/1000_F_600975782_RRlDtJf3fMUQoHhrtDyIA6JOZrHNONdW.jpg" url="a"
+            text="" />
+          <Subbanner imageUrl="https://as2.ftcdn.net/v2/jpg/03/64/65/27/1000_F_364652725_eXiV1UAEYhrIhKoHxCj5z3TZTC5osK9M.jpg" url="a"
+            text="" />
         </div>
         <div class="banner-container">
           <Subbanner imageUrl="https://img.etnews.com/news/article/2021/07/23/cms_temp_article_23153814137700.jpg" url="a"
-            text="nice" />
+            text="" />
           <Subbanner imageUrl="https://img.etnews.com/news/article/2021/07/23/cms_temp_article_23153814137700.jpg" url="a"
-            text="meet you" />
+            text="" />
         </div>
       </div>
     </div>

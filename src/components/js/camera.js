@@ -156,7 +156,7 @@ export class Camera {
         coordArr.push(keypoint)
       ])
       // console.log(coordArr.length);
-      this.drawResult(pose);
+      // this.drawResult(pose);
     }
   }
 
@@ -167,7 +167,7 @@ export class Camera {
   drawResult(pose) {
     if (pose.keypoints != null) {
       this.drawKeypoints(pose.keypoints);
-      this.drawSkeleton(pose.keypoints, pose.id);
+      // this.drawSkeleton(pose.keypoints, pose.id);
       // console.log(coordArr.length);
     }
     if (pose.keypoints3D != null && params.STATE.modelConfig.render3D) {

@@ -1,24 +1,23 @@
 <template>
-    <div class="x-10"></div>
     <div v-if="cate == `all`" class="cateTest">
-        <p v-for="item in all" :key="item" :class="`category`" :style="{backgroundColor: item.color}" @click="viewTopic, moveUrl(item.name)">{{ item.name }}</p>
+        <p v-for="item in all" :key="item" :class="`category`" :style="{backgroundColor: item.color}" @click="viewTopic, moveUrl(item.name)" class="max-h-48">{{ item.name }}</p>
     </div>
     <div v-if="cate == `health`" class="cateTest">
-        <p @click="moveUrl(item.name)" v-for="item in health" :key="item" :class="`category`" :style="{backgroundColor: item.color}">{{ item.name }}</p>
+        <p @click="moveUrl(item.name)" v-for="item in health" :key="item" :class="`category`" :style="{backgroundColor: item.color}" class="max-h-48">{{ item.name }}</p>
     </div>
     <div v-if="cate == `human`" class="cateTest">
-        <p @click="moveUrl(item.name)" v-for="item in human" :key="item" :class="`category`" :style="{backgroundColor: item.color}">{{ item.name }}</p>
+        <p @click="moveUrl(item.name)" v-for="item in human" :key="item" :class="`category`" :style="{backgroundColor: item.color}" class="max-h-48">{{ item.name }}</p>
     </div>
     <div v-if="cate == `natural`" class="cateTest">
-        <p @click="moveUrl(item.name)" v-for="item in natural" :key="item" :class="`category`" :style="{backgroundColor: item.color}">{{
+        <p @click="moveUrl(item.name)" v-for="item in natural" :key="item" :class="`category`" :style="{backgroundColor: item.color}" class="max-h-48">{{
             item.name }}</p>
     </div>
     <div v-if="cate == `exp`" class="cateTest">
-        <p @click="moveUrl(item.name)" v-for="item in exp" :key="item" :class="`category`" :style="{backgroundColor: item.color}">{{
+        <p @click="moveUrl(item.name)" v-for="item in exp" :key="item" :class="`category`" :style="{backgroundColor: item.color}" class="max-h-48">{{
             item.name }}</p>
     </div>
     <div v-if="cate == `lang`" class="cateTest">
-        <p @click="moveUrl(item.name)" v-for="item in lang" :key="item" :class="`category`" :style="{backgroundColor: item.color}">{{
+        <p @click="moveUrl(item.name)" v-for="item in lang" :key="item" :class="`category`" :style="{backgroundColor: item.color}" class="max-h-48">{{
             item.name }}</p>
     </div>
 </template>
@@ -37,7 +36,7 @@ export default {
             human: [{ name: "挨拶", color: "rgb(243, 81, 82)" }, { name: "だ～れだ?", color: "rgb(36, 107, 189)" }, { name: "話を続ける", color: "rgb(9, 181, 128)" },
             { name: "褒めよう", color: "rgb(9, 181, 128)" }, { name: "犯人は誰か", color: "rgb(243, 81, 82)" }, { name: "何してる？", color: "rgb(36, 107, 189)" }],
             natural: [{ name: "カードメモリーゲーム", color: "rgb(243, 81, 82)" }, { name: "タイトルを当てよう", color: "rgb(36, 107, 189)" }, { name: "家作り", color: "rgb(9, 181, 128)" },
-            { name: "ここはどこ?", color: "rgb(9, 181, 128)" }, { name: "リサイクル", color: "rgb(243, 81, 82)" }, { name: "북극곰의눈물", color: "rgb(36, 107, 189)" }],
+            { name: "ここはどこ?", color: "rgb(9, 181, 128)" }, { name: "リサイクル", color: "rgb(243, 81, 82)" }, { name: "涙", color: "rgb(36, 107, 189)" }],
             exp: [{ name: "お描き", color: "rgb(243, 81, 82)" }, { name: "応援しよう", color: "rgb(36, 107, 189)" }, { name: "体で話す", color: "rgb(9, 181, 128)" },
             { name: "感情表現する", color: "rgb(9, 181, 128)" }, { name: "真似してみて", color: "rgb(243, 81, 82)" }, { name: "動物当てよう", color: "rgb(36, 107, 189)" }],
             lang: [{ name: "酸性雨ゲーム", color: "rgb(243, 81, 82)" }, { name: "字書き", color: "rgb(36, 107, 189)" }, { name: "単語合わせ", color: "rgb(9, 181, 128)" },

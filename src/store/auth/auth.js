@@ -5,7 +5,8 @@ export default {
   namespaced: true,
   state: {
     needLogin: true,
-    needAdmin: true
+    needAdmin: true,
+    name: null
   },
   mutations: {
     needLogin(state, data) {
@@ -13,6 +14,9 @@ export default {
     },
     needAdmin(state, data) {
       state.needAdmin = data;
+    },
+    name(state, data) {
+      state.name = data;
     }
   },
   getters: {
@@ -21,6 +25,9 @@ export default {
     },
     needAdmin(state) {
       return state.needAdmin;
+    },
+    name(state) {
+      return state.name;
     },
   },
   actions: {
@@ -63,6 +70,7 @@ export default {
           const { cookies } = useCookies();
           cookies.set("accessToken", access, { expires: 1 });
           cookies.set("refreshToken", refresh, { expires: 7 });
+          commit("name", rs.data.user.name)
           commit("needLogin", false);
           if (rs.data.user.authority === 'admin') {
             commit('needAdmin', false)
@@ -80,14 +88,14 @@ export default {
         if (rs.data.ok) {
           return true;
         } else {
-          console.error("トークン認証失敗");
+          console.error("토큰인증실패");
           alert(rs.data.result);
           commit("needLogin", true);
           commit("needAdmin", true)
           return false;
         }
       } catch (err) {
-        console.error("エラー", err);
+        console.error("에러", err);
         if (err.response && err.response.status === 401) {
           // Unauthorized error: JWT token is invalid or expired
           alert("Your session has expired. Please log in again.");
